@@ -1,18 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/white"
+    android:id="@+id/mainActivity_RL"
     tools:context=".MainActivity">
+
+    <ImageView
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:id="@+id/mainActivity_LOGO"
+        android:src="@drawable/handshake"
+        android:layout_alignParentTop="true"
+        android:layout_centerInParent="true"
+        android:layout_marginTop="160dp" />
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintLeft_toLeftOf="parent"
-        app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:id="@+id/mainActivity_TagLine"
+        android:text="@string/welcome"
+        android:textColor="@color/black"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/mainActivity_LOGO" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <Button
+        android:layout_width="168dp"
+        android:layout_height="60dp"
+        android:id="@+id/mainActivity_MoveBtn"
+        android:text="@string/get_started_btn"
+        android:layout_centerInParent="true"
+        android:layout_below="@id/mainActivity_TagLine"
+        android:backgroundTint="@color/holo_orange_light"
+        android:background="@drawable/round_btn_bg"
+        android:layout_marginTop="8dp" />
+
+</RelativeLayout>

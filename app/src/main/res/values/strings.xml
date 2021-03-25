@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SocialMediaApp</string>
+    <string name="welcome">Mühendislerin Buluşma Noktası</string>
+    <string name="get_started_btn">Başlat</string>
 </resources>
