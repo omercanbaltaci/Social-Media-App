@@ -8,4 +8,5 @@
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFF</color>
     <color name="holo_orange_light">@android:color/holo_orange_light</color>
+    <color name="background_tint">#F8D793</color>
 </resources>

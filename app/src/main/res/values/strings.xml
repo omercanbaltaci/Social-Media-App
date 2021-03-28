@@ -2,4 +2,9 @@
     <string name="app_name">SocialMediaApp</string>
     <string name="welcome">Mühendislerin Buluşma Noktası</string>
     <string name="get_started_btn">Başlat</string>
+    <string name="email_et_hint">E-posta</string>
+    <string name="password_et_hint">Şifre</string>
+    <string name="login_string">Giriş</string>
+    <string name="no_account_line">Hesabınız yok mu?</string>
+    <string name="move_to_register">Kayıt ol</string>
 </resources>

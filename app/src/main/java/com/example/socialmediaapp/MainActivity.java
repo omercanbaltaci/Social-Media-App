@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             moveToLoginPageBtn = findViewById(R.id.mainActivity_MoveBtn);
         } catch (Exception e) {
-            Toast.makeText(this, "MainAction:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Aksiyon:" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -43,7 +43,7 @@ public class MainActivity extends AppCompatActivity {
         try {
             startActivity(new Intent(this, LoginPage.class));
         } catch (Exception e) {
-            Toast.makeText(this, "MainActivity:" + e.getMessage(), Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Aktivite:" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
     }
 }
