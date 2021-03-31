@@ -22,7 +22,7 @@
         android:layout_height="35dp"
         android:id="@+id/loginPage_emailET"
         android:maxLength="20"
-        android:drawablePadding="3dp"
+        android:drawablePadding="7dp"
         android:layout_marginTop="10dp"
         android:hint="@string/email_et_hint"
         android:layout_below="@id/loginPage_LOGO"
@@ -36,7 +36,7 @@
     <EditText
         android:layout_width="match_parent"
         android:layout_height="35dp"
-        android:drawablePadding="3dp"
+        android:drawablePadding="7dp"
         android:inputType="textPassword"
         android:id="@+id/loginPage_passwordET"
         android:maxLength="10"
@@ -52,7 +52,7 @@
 
     <Button
         android:layout_width="168dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:id="@+id/loginPage_loginBtn"
         android:layout_below="@id/loginPage_passwordET"
         android:layout_centerInParent="true"
@@ -73,7 +73,7 @@
 
     <Button
         android:layout_width="168dp"
-        android:layout_height="40dp"
+        android:layout_height="60dp"
         android:id="@+id/loginPage_moveToRegister"
         android:layout_below="@id/loginPage_newAccount"
         android:layout_centerInParent="true"

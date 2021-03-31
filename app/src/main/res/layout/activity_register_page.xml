@@ -1,9 +1,137 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:id="@+id/RegisterPage_RL"
+    android:background="@color/background_tint"
     tools:context=".Activities.RegisterPage">
+    
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/RegisterPage_userProfileIV"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="47dp"
+        android:padding="2dp"
+        android:src="@drawable/register"
+        android:scaleType="centerCrop" />
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/RegisterPage_userNameET"
+        android:layout_below="@id/RegisterPage_userProfileIV"
+        android:background="@drawable/login_et_bg"
+        android:drawableLeft="@drawable/login_et_left_drawable"
+        android:drawablePadding="7dp"
+        android:gravity="center|left"
+        android:layout_marginTop="5dp"
+        android:hint="@string/user_name"
+        android:padding="2dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:maxLength="20" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/RegisterPage_emailET"
+        android:layout_below="@id/RegisterPage_userNameET"
+        android:background="@drawable/login_et_bg"
+        android:drawableLeft="@drawable/email_et_left_drawable"
+        android:drawablePadding="7dp"
+        android:gravity="center|left"
+        android:layout_marginTop="5dp"
+        android:hint="@string/email_et_hint"
+        android:padding="2dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:maxLength="20" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/RegisterPage_userDOBTV"
+        android:layout_below="@id/RegisterPage_emailET"
+        android:background="@drawable/login_et_bg"
+        android:layout_marginRight="25dp"
+        android:layout_marginLeft="25dp"
+        android:layout_marginTop="5dp"
+        android:drawableLeft="@drawable/date_et_left_drawable"
+        android:drawablePadding="7dp"
+        android:padding="2dp"
+        android:gravity="center|left"
+        android:text="@string/user_DOB"
+        android:textColor="@color/highlighter"
+        android:textSize="17sp"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/RegisterPage_passwordET"
+        android:layout_below="@id/RegisterPage_userDOBTV"
+        android:background="@drawable/login_et_bg"
+        android:drawableLeft="@drawable/password_et_left_drawable"
+        android:drawablePadding="7dp"
+        android:padding="2dp"
+        android:hint="@string/password_et_hint"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:inputType="textPassword"
+        android:layout_marginTop="5dp" />
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:id="@+id/RegisterPage_confirmPasswordET"
+        android:layout_below="@id/RegisterPage_passwordET"
+        android:background="@drawable/login_et_bg"
+        android:drawableLeft="@drawable/password_et_left_drawable"
+        android:drawablePadding="7dp"
+        android:padding="2dp"
+        android:hint="@string/confirm_password_hint"
+        android:layout_marginLeft="25dp"
+        android:layout_marginRight="25dp"
+        android:inputType="textPassword"
+        android:layout_marginTop="5dp" />
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/RegisterPage_radioGroup"
+        android:orientation="horizontal"
+        android:layout_below="@id/RegisterPage_confirmPasswordET"
+        android:layout_marginTop="3dp"
+        android:layout_centerInParent="true">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/maleRadio"
+            android:text="@string/radio_male"
+            android:checked="true"
+            android:buttonTint="@color/holo_orange_light" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/femaleRadio"
+            android:text="@string/radio_female"
+            android:buttonTint="@color/holo_orange_light" />
+    </RadioGroup>
+
+    <Button
+        android:layout_width="168dp"
+        android:layout_height="60dp"
+        android:id="@+id/RegisterPage_registerBtn"
+        android:layout_below="@id/RegisterPage_radioGroup"
+        android:layout_centerInParent="true"
+        android:backgroundTint="@color/holo_orange_light"
+        android:text="@string/move_to_register"
+        android:layout_marginTop="8dp" />
+
+
+</RelativeLayout>

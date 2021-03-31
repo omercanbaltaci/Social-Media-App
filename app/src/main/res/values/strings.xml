@@ -4,7 +4,12 @@
     <string name="get_started_btn">Başlat</string>
     <string name="email_et_hint">E-posta</string>
     <string name="password_et_hint">Şifre</string>
+    <string name="confirm_password_hint">Şifreyi tekrar girin</string>
     <string name="login_string">Giriş</string>
     <string name="no_account_line">Hesabınız yok mu?</string>
     <string name="move_to_register">Kayıt ol</string>
+    <string name="user_name">Kullanıcı Adı</string>
+    <string name="user_DOB">Doğum Tarihi</string>
+    <string name="radio_male">Erkek</string>
+    <string name="radio_female">Kadın</string>
 </resources>
