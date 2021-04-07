@@ -38,6 +38,7 @@ import com.google.firebase.storage.UploadTask;
 
 import java.util.Calendar;
 import java.util.HashMap;
+import java.util.Locale;
 import java.util.Map;
 
 import de.hdodenhof.circleimageview.CircleImageView;
@@ -188,18 +189,24 @@ public class RegisterPage extends AppCompatActivity {
 
     private void chooseDOB() {
         try {
+            // Uygulamanın kurulu olduğu sistem local'i
+            Locale locale = getResources().getConfiguration().locale;
+            Locale.setDefault(locale);
+
+            // Günün tarihi
             Calendar objectCalendar = Calendar.getInstance();
             int year = objectCalendar.get(Calendar.YEAR);
             int month = objectCalendar.get(Calendar.MONTH);
             int day = objectCalendar.get(Calendar.DAY_OF_MONTH);
 
+            // Doğum tarihi girdisi için ekrana çıkarılacak dialog
             DatePickerDialog objectDatePickerDialog = new DatePickerDialog(this,
                     android.R.style.Theme_Holo_Light_Dialog_MinWidth,
                     objectOnDateSetListener, year, month, day);
-
             objectDatePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
             objectDatePickerDialog.show();
 
+            // Girdi alındıktan sonra date textview'ına girilen değer verilir
             objectOnDateSetListener = new DatePickerDialog.OnDateSetListener() {
                 @Override
                 public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {

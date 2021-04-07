@@ -12,4 +12,7 @@
     <string name="user_DOB">Doğum Tarihi</string>
     <string name="radio_male">Erkek</string>
     <string name="radio_female">Kadın</string>
+    <string name="text_thoughts">Statüler</string>
+    <string name="image_thoughts">Resimler</string>
+    <string name="favorite_thoughts">Favoriler</string>
 </resources>

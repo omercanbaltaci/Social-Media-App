@@ -17,7 +17,7 @@
         android:layout_marginTop="47dp"
         android:padding="2dp"
         android:src="@drawable/register"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -33,7 +33,7 @@
         android:padding="2dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:maxLength="20" />
+        android:maxLength="20"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -49,7 +49,7 @@
         android:padding="2dp"
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
-        android:maxLength="20" />
+        android:maxLength="20"/>
 
     <TextView
         android:layout_width="match_parent"
@@ -81,7 +81,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:inputType="textPassword"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -96,7 +96,7 @@
         android:layout_marginLeft="25dp"
         android:layout_marginRight="25dp"
         android:inputType="textPassword"
-        android:layout_marginTop="5dp" />
+        android:layout_marginTop="5dp"/>
 
     <RadioGroup
         android:layout_width="wrap_content"
@@ -113,14 +113,14 @@
             android:id="@+id/maleRadio"
             android:text="@string/radio_male"
             android:checked="true"
-            android:buttonTint="@color/holo_orange_light" />
+            android:buttonTint="@color/holo_orange_light"/>
 
         <RadioButton
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:id="@+id/femaleRadio"
             android:text="@string/radio_female"
-            android:buttonTint="@color/holo_orange_light" />
+            android:buttonTint="@color/holo_orange_light"/>
     </RadioGroup>
 
     <Button
@@ -131,7 +131,7 @@
         android:layout_centerInParent="true"
         android:backgroundTint="@color/holo_orange_light"
         android:text="@string/move_to_register"
-        android:layout_marginTop="8dp" />
-
+        android:textSize="18dp"
+        android:layout_marginTop="8dp"/>
 
 </RelativeLayout>

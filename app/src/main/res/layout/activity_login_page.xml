@@ -15,7 +15,7 @@
         android:src="@drawable/handshake"
         android:layout_centerInParent="true"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="100dp" />
+        android:layout_marginTop="100dp"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -31,7 +31,7 @@
         android:gravity="center|left"
         android:drawableLeft="@drawable/login_et_left_drawable"
         android:padding="2dp"
-        android:background="@drawable/login_et_bg" />
+        android:background="@drawable/login_et_bg"/>
 
     <EditText
         android:layout_width="match_parent"
@@ -56,10 +56,10 @@
         android:id="@+id/loginPage_loginBtn"
         android:layout_below="@id/loginPage_passwordET"
         android:layout_centerInParent="true"
-        android:background="@drawable/round_btn_bg"
         android:backgroundTint="@color/holo_orange_light"
         android:text="@string/login_string"
-        android:layout_marginTop="8dp" />
+        android:textSize="18dp"
+        android:layout_marginTop="8dp"/>
 
     <TextView
         android:layout_width="wrap_content"
@@ -68,8 +68,10 @@
         android:layout_below="@id/loginPage_loginBtn"
         android:layout_centerInParent="true"
         android:text="@string/no_account_line"
+        android:textSize="16dp"
+        android:textColor="@color/not_selected_tint"
         android:layout_marginTop="30dp"
-        android:textStyle="bold" />
+        android:textStyle="bold"/>
 
     <Button
         android:layout_width="168dp"
@@ -77,11 +79,9 @@
         android:id="@+id/loginPage_moveToRegister"
         android:layout_below="@id/loginPage_newAccount"
         android:layout_centerInParent="true"
-        android:background="@drawable/round_btn_bg"
         android:backgroundTint="@color/holo_orange_light"
         android:text="@string/move_to_register"
-        android:layout_marginTop="8dp" />
-
-
+        android:textSize="18dp"
+        android:layout_marginTop="8dp"/>
 
 </RelativeLayout>

@@ -15,26 +15,28 @@
         android:src="@drawable/handshake"
         android:layout_alignParentTop="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="160dp" />
+        android:layout_marginTop="160dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/mainActivity_TagLine"
         android:text="@string/welcome"
-        android:textColor="@color/black"
+        android:textStyle="bold"
+        android:textSize="18dp"
+        android:textColor="@color/not_selected_tint"
         android:layout_centerInParent="true"
-        android:layout_below="@id/mainActivity_LOGO" />
+        android:layout_below="@id/mainActivity_LOGO"/>
 
     <Button
         android:layout_width="168dp"
         android:layout_height="60dp"
         android:id="@+id/mainActivity_MoveBtn"
         android:text="@string/get_started_btn"
+        android:textSize="18dp"
         android:layout_centerInParent="true"
         android:layout_below="@id/mainActivity_TagLine"
         android:backgroundTint="@color/holo_orange_light"
-        android:background="@drawable/round_btn_bg"
-        android:layout_marginTop="8dp" />
+        android:layout_marginTop="8dp"/>
 
 </RelativeLayout>
