@@ -15,4 +15,10 @@
     <string name="text_thoughts">Statüler</string>
     <string name="image_thoughts">Resimler</string>
     <string name="favorite_thoughts">Favoriler</string>
+    <string name="user_name_header">KULLANICI ADI</string>
+    <string name="user_email_header">kullanıcıMaili@mail.com</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>

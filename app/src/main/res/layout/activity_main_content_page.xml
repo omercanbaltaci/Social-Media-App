@@ -57,4 +57,19 @@
 
     </RelativeLayout>
 
+    <com.rom4ek.arcnavigationview.ArcNavigationView
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:id="@+id/navigationView"
+        android:fitsSystemWindows="true"
+        android:background="@color/holo_orange_light"
+        android:layout_gravity="start"
+        app:itemHorizontalPadding="5dp"
+        app:itemTextColor="@color/not_selected_tint"
+        app:itemIconTint="@color/not_selected_tint"
+        app:headerLayout="@layout/drawer_header"
+        app:menu="@menu/menu_items"
+        android:theme="@style/NavigationViewStyle"
+        />
+
 </androidx.drawerlayout.widget.DrawerLayout>

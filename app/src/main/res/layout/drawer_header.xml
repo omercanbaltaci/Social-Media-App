@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="140dp"
+    android:background="@color/holo_orange_light">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/register"
+        android:alpha=".4"
+        android:id="@+id/header_profilePicBack"/>
+
+    <de.hdodenhof.circleimageview.CircleImageView
+        android:layout_width="75dp"
+        android:layout_height="75dp"
+        android:id="@+id/header_profilePic"
+        android:layout_marginTop="40dp"
+        android:layout_marginLeft="15dp"
+        android:src="@drawable/register"
+        android:scaleType="centerCrop"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/header_userName"
+        android:textSize="18sp"
+        android:text="@string/user_name_header"
+        android:layout_toRightOf="@id/header_profilePic"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginTop="55dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/header_userEmail"
+        android:text="@string/user_email_header"
+        android:textSize="11sp"
+        android:layout_below="@id/header_userName"
+        android:layout_toRightOf="@id/header_profilePic"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:layout_marginLeft="10dp"/>
+
+    <ProgressBar
+        android:layout_width="50dp"
+        android:layout_height="50dp"
+        android:id="@+id/header_progressBar"
+        android:layout_centerInParent="true"
+        android:visibility="invisible"/>
+</RelativeLayout>

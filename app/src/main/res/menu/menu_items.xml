@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/group_item_1"
+        android:title="HAKKIMDA">
+        <menu>
+            <item
+                android:id="@+id/item_profile"
+                android:title="PROFİLİM"
+                android:icon="@drawable/ic_profile"
+                android:checked="true"/>
+            <item
+                android:id="@+id/item_notifications"
+                android:title="BİLDİRİMLER"
+                app:actionViewClass="android.widget.TextView"
+                android:icon="@drawable/ic_notifications"
+                android:checked="true"/>
+            <item
+                android:id="@+id/item_settings"
+                android:title="AYARLAR"
+                android:icon="@drawable/ic_settings"
+                android:checked="true"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/group_item_2"
+        android:title="ARKADAŞLARIM">
+        <menu>
+            <item
+                android:id="@+id/item_favorite"
+                android:title="FAVORİLER"
+                android:icon="@drawable/ic_favorite_thoughts"
+                android:checked="true"/>
+            <item
+                android:id="@+id/item_textstatus"
+                android:title="ZAMAN TÜNELİ"
+                android:icon="@drawable/ic_text_thoughts"
+                android:checked="true"/>
+        </menu>
+    </item>
+    <item
+        android:id="@+id/item_signOut"
+        android:title="ÇIKIŞ YAP"
+        android:icon="@drawable/ic_signout"
+        android:checked="true"/>
+</menu>
