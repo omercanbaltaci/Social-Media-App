@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/Frag_AddImageThought_RL"
+    android:background="@color/background_tint"
+    tools:context=".Fragments.addImageThoughtFragment">
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Geri dön"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="10dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@color/white"
+        android:textColor="@color/holo_orange_light"
+        android:id="@+id/Frag_AddImageThought_goBackBtn"/>
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:src="@drawable/ic_addphoto"
+        android:scaleType="centerCrop"
+        android:layout_margin="10dp"
+        android:id="@+id/Frag_AddImageThought_getImageIV"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:id="@+id/Frag_AddImageThought_descriptionET"
+        android:textColor="@color/not_selected_tint"
+        android:background="@color/white"
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="20dp"
+        android:layout_marginRight="20dp"
+        android:textSize="15sp"
+        android:textColorHint="@color/not_selected_tint"
+        android:hint="@string/imagestatus_hint"
+        android:inputType="textMultiLine"
+        android:paddingLeft="8dp"
+        android:gravity="top|left"
+        android:maxLength="100"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:minWidth="0dp"
+        android:minHeight="0dp"
+        android:text="Gönder"
+        android:layout_marginTop="4dp"
+        android:textSize="15sp"
+        android:layout_below="@id/Frag_AddImageThought_descriptionET"
+        android:id="@+id/Frag_AddImageThought_publishThoughtBtn"
+        android:textColor="@color/holo_orange_light"
+        android:backgroundTint="@color/white"
+        android:padding="10dp"
+        android:layout_centerInParent="true"/>
+
+    <ProgressBar
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:id="@+id/Frag_AddImageThought_progressBar"
+        android:layout_centerInParent="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="100dp"
+        android:visibility="invisible"/>
+
+</RelativeLayout>

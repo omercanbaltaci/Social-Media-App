@@ -19,6 +19,8 @@
     <string name="user_email_header">kullanıcıMaili@mail.com</string>
     <string name="open">Open</string>
     <string name="close">Close</string>
+    <string name="textstatus_hint">Aklından ne geçiyor?</string>
+    <string name="imagestatus_hint">Aklından ne geçiyor?</string>
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
 </resources>
