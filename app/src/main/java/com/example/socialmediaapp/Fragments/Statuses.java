@@ -3,12 +3,20 @@ package com.example.socialmediaapp.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.socialmediaapp.AdaptersClasses.TextStatusAdapterClass;
+import com.example.socialmediaapp.ModelClasses.Model_TextStatus;
 import com.example.socialmediaapp.R;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -27,8 +35,18 @@ public class Statuses extends Fragment {
     private String mParam2;
 
     public Statuses() {
-        // Required empty public constructor
+
     }
+
+    // XML
+    private RecyclerView objectRecylerView;
+
+    // Class
+    private View parent;
+    private TextStatusAdapterClass objectTextStatusAdapterClass;
+
+    //Firebase
+    FirebaseFirestore objectFirebaseFirestore;
 
     /**
      * Use this factory method to create a new instance of
@@ -61,6 +79,44 @@ public class Statuses extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_statuses, container, false);
+        parent = inflater.inflate(R.layout.fragment_statuses, container, false);
+        objectRecylerView = parent.findViewById(R.id.textStatus_RV);
+        objectFirebaseFirestore = FirebaseFirestore.getInstance();
+        addStatusToRV();
+        return parent;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+        try {
+            objectTextStatusAdapterClass.startListening();
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+        try {
+
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void addStatusToRV() {
+        try {
+            Query objectQuery = objectFirebaseFirestore.collection("TextStatus")
+                    .orderBy("currentdatetime", Query.Direction.DESCENDING);
+            FirestoreRecyclerOptions<Model_TextStatus> options = new FirestoreRecyclerOptions.Builder<Model_TextStatus>()
+                    .setQuery(objectQuery, Model_TextStatus.class).build();
+            objectTextStatusAdapterClass = new TextStatusAdapterClass(options);
+            objectRecylerView.setAdapter(objectTextStatusAdapterClass);
+            objectRecylerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 }
