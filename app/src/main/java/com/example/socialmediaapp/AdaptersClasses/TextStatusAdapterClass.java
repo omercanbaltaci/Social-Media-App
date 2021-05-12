@@ -20,6 +20,7 @@ import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.OnFailureListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.firestore.DocumentReference;
@@ -275,6 +276,80 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                 Intent objectIntent = new Intent(objectContext, TextCommentPage.class);
                 objectIntent.putExtra("documentId", documentID);
                 objectContext.startActivity(objectIntent);
+            }
+        });
+
+        textStatusViewHolder.favoriteIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String documentId = getSnapshots().getSnapshot(textStatusViewHolder.getAdapterPosition()).getId();
+                FirebaseFirestore objectFirebaseFirestore = FirebaseFirestore.getInstance();
+
+                DocumentReference objectDocumentReference = objectFirebaseFirestore.collection("TextStatus")
+                        .document(documentId);
+                objectDocumentReference.get().addOnSuccessListener(new OnSuccessListener<DocumentSnapshot>() {
+                    @Override
+                    public void onSuccess(DocumentSnapshot documentSnapshot) {
+                        String userEmail = documentSnapshot.getString("useremail");
+                        String status = documentSnapshot.getString("status");
+                        String profileUrl = documentSnapshot.getString("profileurl");
+                        String statusDate = documentSnapshot.getString("currentdatetime");
+
+                        Map<String, Object> objectMap = new HashMap<>();
+                        objectMap.put("useremail", userEmail);
+                        objectMap.put("status", status);
+                        objectMap.put("profileurl", profileUrl);
+                        objectMap.put("currentdatetime", statusDate);
+
+                        FirebaseAuth objectFirebaseAuth = FirebaseAuth.getInstance();
+                        if (objectFirebaseAuth != null) {
+                            String currentLoggedInUser = objectFirebaseAuth.getCurrentUser().getEmail();
+                            objectFirebaseFirestore.collection("UserFavorite").document(currentLoggedInUser)
+                                    .collection("FavoriteTexStatus")
+                                    .document(documentId)
+                                    .set(objectMap).addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(textStatusViewHolder.favoriteIV.getContext(), "Favoriye eklendi", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                                @Override
+                                public void onFailure(@NonNull Exception e) {
+                                    Toast.makeText(textStatusViewHolder.favoriteIV.getContext(), "Favoriye eklenemedi", Toast.LENGTH_SHORT).show();
+                                }
+                            });
+                        } else Toast.makeText(textStatusViewHolder.favoriteIV.getContext(), "Giriş yapmış bir kullanıcı yok", Toast.LENGTH_SHORT).show();
+                    }
+                }).addOnFailureListener(new OnFailureListener() {
+                    @Override
+                    public void onFailure(@NonNull Exception e) {
+
+                    }
+                });
+            }
+        });
+
+        textStatusViewHolder.deleteIV.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                FirebaseAuth objectFirebaseAuth = FirebaseAuth.getInstance();
+                if (objectFirebaseAuth.getCurrentUser().getEmail().equals(model_textStatus.getUseremail())) {
+                    FirebaseFirestore objectFirebaseFirestore = FirebaseFirestore.getInstance();
+                    objectFirebaseFirestore.collection("TextStatus")
+                            .document(getSnapshots().getSnapshot(textStatusViewHolder.getAdapterPosition()).getId())
+                            .delete()
+                            .addOnSuccessListener(new OnSuccessListener<Void>() {
+                                @Override
+                                public void onSuccess(Void aVoid) {
+                                    Toast.makeText(textStatusViewHolder.deleteIV.getContext(), "Statü silindi", Toast.LENGTH_SHORT).show();
+                                }
+                            }).addOnFailureListener(new OnFailureListener() {
+                        @Override
+                        public void onFailure(@NonNull Exception e) {
+                            Toast.makeText(textStatusViewHolder.deleteIV.getContext(), "Statü silinemedi", Toast.LENGTH_SHORT).show();
+                        }
+                    });
+                } else Toast.makeText(textStatusViewHolder.deleteIV.getContext(), "Bu statüyü silme yetkiniz yok", Toast.LENGTH_SHORT).show();
             }
         });
     }

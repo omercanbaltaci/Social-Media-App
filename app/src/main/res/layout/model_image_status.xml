@@ -1,0 +1,162 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:id="@+id/model_image_status_RL">
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        android:id="@+id/model_image_status_imageStatusIV"
+        android:scaleType="centerCrop"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="30dp"
+        android:id="@+id/model_image_status_profilePicIV"
+        android:src="@drawable/ic_profile"
+        android:scaleType="centerCrop"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="8dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:id="@+id/model_image_status_userEmailTV"
+        android:textColor="@color/design_default_color_primary"
+        android:text="email@email.com"
+        android:layout_toRightOf="@id/model_image_status_profilePicIV"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="10dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="20dp"
+        android:id="@+id/model_image_status_dateOfStatusTV"
+        android:textSize="10sp"
+        android:textColor="@color/design_default_color_primary"
+        android:layout_below="@id/model_image_status_userEmailTV"
+        android:paddingLeft="10dp"
+        android:text="00:00:00 00 Jan 2021"
+        android:layout_toRightOf="@id/model_image_status_profilePicIV"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="örnek statü"
+        android:id="@+id/model_image_status_imageStatusDesTV"
+        android:textColor="@color/design_default_color_primary"
+        android:paddingLeft="10dp"
+        android:paddingRight="10dp"
+        android:textSize="17sp"
+        android:layout_alignBottom="@id/model_image_status_imageStatusIV"
+        android:layout_marginBottom="20dp"
+        android:paddingTop="5dp"/>
+
+    <ImageView
+        android:layout_width="30dp"
+        android:layout_height="40dp"
+        android:layout_alignParentRight="true"
+        android:background="@color/background_tint"
+        android:src="@drawable/ic_favorite_status"
+        android:id="@+id/model_image_status_favoriteImageStatusIV"
+        android:layout_marginRight="10dp"/>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="30dp"
+        android:id="@+id/model_image_status_InnerLinearLayout"
+        android:padding="3dp"
+        android:orientation="horizontal"
+        android:layout_below="@id/model_image_status_imageStatusIV"
+        android:background="@color/white">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/model_image_status_heartIV"
+            android:src="@drawable/ic_heart"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"
+            android:layout_marginLeft="10dp"/>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/model_image_status_heartCountTV"
+            android:text="0"
+            android:gravity="bottom|left"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:paddingBottom="3dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/model_image_status_hahaIV"
+            android:src="@drawable/ic_haha"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/model_image_status_hahaCountTV"
+            android:text="0"
+            android:gravity="bottom|left"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:paddingBottom="3dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/model_image_status_sadIV"
+            android:src="@drawable/ic_sad"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/model_image_status_sadCountTV"
+            android:text="0"
+            android:gravity="bottom|left"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:paddingBottom="3dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/model_image_status_commentIV"
+            android:src="@drawable/ic_comments"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+        <TextView
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:id="@+id/model_image_status_commentCountTV"
+            android:text="0"
+            android:gravity="bottom|left"
+            android:textColor="@color/black"
+            android:layout_marginLeft="5dp"
+            android:paddingBottom="3dp"/>
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:id="@+id/model_image_status_deleteIV"
+            android:src="@drawable/ic_delete"
+            android:scaleType="centerCrop"
+            android:layout_marginTop="5dp"
+            android:layout_marginBottom="5dp"/>
+
+    </LinearLayout>
+
+</RelativeLayout>
