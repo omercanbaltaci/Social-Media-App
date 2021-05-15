@@ -3,12 +3,21 @@ package com.example.socialmediaapp.Fragments;
 import android.os.Bundle;
 
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
+import com.example.socialmediaapp.AdaptersClasses.ImageStatusAdapterClass;
+import com.example.socialmediaapp.ModelClasses.Model_ImageStatus;
 import com.example.socialmediaapp.R;
+import com.firebase.ui.firestore.FirestoreRecyclerOptions;
+import com.google.android.material.tabs.TabLayout;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.Query;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -16,6 +25,13 @@ import com.example.socialmediaapp.R;
  * create an instance of this fragment.
  */
 public class Images extends Fragment {
+    // Class
+    private View parent;
+    private RecyclerView objectRecyclerView;
+    private ImageStatusAdapterClass objectImageStatusAdapterClass;
+
+    // Firebase
+    private FirebaseFirestore objectFirebaseFirestore;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -61,6 +77,56 @@ public class Images extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_images, container, false);
+        parent = inflater.inflate(R.layout.fragment_images, container, false);
+        attachJavaObjectsToXML();
+        getImagesStatuses();
+
+        return parent;
+    }
+
+    @Override
+    public void onStart() {
+        super.onStart();
+
+        try {
+            objectImageStatusAdapterClass.startListening();
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    public void onStop() {
+        super.onStop();
+
+        try {
+            objectImageStatusAdapterClass.stopListening();
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void getImagesStatuses() {
+        try {
+            Query objectQuery = objectFirebaseFirestore.collection("ImageStatus").orderBy("currentdatetime", Query.Direction.DESCENDING);
+            FirestoreRecyclerOptions<Model_ImageStatus> objectOptions =
+                    new FirestoreRecyclerOptions.Builder<Model_ImageStatus>()
+                    .setQuery(objectQuery, Model_ImageStatus.class).build();
+
+            objectImageStatusAdapterClass = new ImageStatusAdapterClass(objectOptions);
+            objectRecyclerView.setAdapter(objectImageStatusAdapterClass);
+            objectRecyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    private void attachJavaObjectsToXML() {
+        try {
+            objectRecyclerView = parent.findViewById(R.id.imagesStatus_RV);
+            objectFirebaseFirestore = FirebaseFirestore.getInstance();
+        } catch (Exception e) {
+            Toast.makeText(getActivity(), e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
     }
 }
