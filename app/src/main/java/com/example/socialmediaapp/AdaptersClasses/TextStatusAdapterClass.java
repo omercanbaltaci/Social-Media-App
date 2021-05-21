@@ -14,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.socialmediaapp.Activities.TextCommentPage;
+import com.example.socialmediaapp.AppClasses.AddNotifications;
 import com.example.socialmediaapp.ModelClasses.Model_TextStatus;
 import com.example.socialmediaapp.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -49,6 +50,8 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
         Glide.with(textStatusViewHolder.profileIV.getContext())
                 .load(linkOfProfileImage).into(textStatusViewHolder.profileIV);
 
+        AddNotifications objectAddNotifications = new AddNotifications();
+
         textStatusViewHolder.heartIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +70,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.getResult().exists()) {
                                 String currentFlag = task.getResult().getString("currentflag");
+                                objectAddNotifications.generateNotification(userEmail, "love", "text status", model_textStatus.getUseremail());
 
                                 if (currentFlag.equals("love")) objDocumentReference.update("currentflag", "love");
                                 else if (currentFlag.equals("haha")) {
@@ -110,6 +114,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                                         .getReference().update("nooflove", totalHearts);
 
                                 objDocumentReference.update("currentflag", "love");
+                                objectAddNotifications.generateNotification(userEmail, "love", "text status", model_textStatus.getUseremail());
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -140,6 +145,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.getResult().exists()) {
                                 String currentFlag = task.getResult().getString("currentflag");
+                                objectAddNotifications.generateNotification(userEmail, "haha", "text status", model_textStatus.getUseremail());
 
                                 if (currentFlag.equals("haha")) objDocumentReference.update("currentflag", "haha");
                                 else if (currentFlag.equals("love")) {
@@ -183,6 +189,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                                         .getReference().update("noofhaha", totalHaha);
 
                                 objDocumentReference.update("currentflag", "haha");
+                                objectAddNotifications.generateNotification(userEmail, "haha", "text status", model_textStatus.getUseremail());
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -213,6 +220,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.getResult().exists()) {
                                 String currentFlag = task.getResult().getString("currentflag");
+                                objectAddNotifications.generateNotification(userEmail, "sad", "text status", model_textStatus.getUseremail());
 
                                 if (currentFlag.equals("sad")) objDocumentReference.update("currentflag", "sad");
                                 else if (currentFlag.equals("love")) {
@@ -256,6 +264,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                                         .getReference().update("noofsad", totalHaha);
 
                                 objDocumentReference.update("currentflag", "sad");
+                                objectAddNotifications.generateNotification(userEmail, "sad", "text status", model_textStatus.getUseremail());
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -275,6 +284,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                 Context objectContext = textStatusViewHolder.commentIV.getContext();
                 Intent objectIntent = new Intent(objectContext, TextCommentPage.class);
                 objectIntent.putExtra("documentId", documentID);
+                objectIntent.putExtra("userEmailID", model_textStatus.getUseremail());
                 objectContext.startActivity(objectIntent);
             }
         });
@@ -305,12 +315,13 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                         if (objectFirebaseAuth != null) {
                             String currentLoggedInUser = objectFirebaseAuth.getCurrentUser().getEmail();
                             objectFirebaseFirestore.collection("UserFavorite").document(currentLoggedInUser)
-                                    .collection("FavoriteTexStatus")
+                                    .collection("FavoriteTextStatus")
                                     .document(documentId)
                                     .set(objectMap).addOnSuccessListener(new OnSuccessListener<Void>() {
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(textStatusViewHolder.favoriteIV.getContext(), "Favoriye eklendi", Toast.LENGTH_SHORT).show();
+                                    objectAddNotifications.generateNotification(userEmail, "favorite", "text status", model_textStatus.getUseremail());
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override

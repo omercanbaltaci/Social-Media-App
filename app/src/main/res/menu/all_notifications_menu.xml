@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+    <item
+        android:id="@+id/allNotifications_item_clear"
+        android:title="TEMİZLE"
+        android:icon="@drawable/ic_delete"
+        app:showAsAction="always"
+        />
+    <item
+        android:id="@+id/allNotifications_item_goback"
+        android:title="GERİ DÖN"
+        android:icon="@drawable/ic_goback"
+        app:showAsAction="always"
+        />
+</menu>

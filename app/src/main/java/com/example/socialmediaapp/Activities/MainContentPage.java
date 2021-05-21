@@ -1,17 +1,21 @@
 package com.example.socialmediaapp.Activities;
 
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.view.GravityCompat;
+import androidx.core.view.MenuItemCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import android.content.Intent;
+import android.graphics.Typeface;
 import android.graphics.drawable.DrawableWrapper;
 import android.os.Bundle;
+import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.ImageView;
@@ -30,9 +34,14 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
 import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.QuerySnapshot;
 
 import de.hdodenhof.circleimageview.CircleImageView;
 
@@ -47,11 +56,14 @@ public class MainContentPage extends AppCompatActivity implements NavigationView
     private ProgressBar header_progressBar;
     private BottomNavigationView objectBottomNavigationView;
     private FloatingActionButton objectFloatingActionButton;
+    private TextView notificationTV;
 
     // Firebase
     private FirebaseAuth objectFirebaseAuth;
     private FirebaseFirestore objectFirebaseFirestore;
     private DocumentReference objectDocumentReference;
+    private CollectionReference objectCollectionReference;
+    private FirebaseFirestore notificationsFirebaseFirestore;
 
     // Class
     private String currentUserEmail;
@@ -68,6 +80,11 @@ public class MainContentPage extends AppCompatActivity implements NavigationView
 
         objectFirebaseAuth = FirebaseAuth.getInstance();
         objectFirebaseFirestore = FirebaseFirestore.getInstance();
+
+        notificationsFirebaseFirestore = FirebaseFirestore.getInstance();
+        objectCollectionReference = notificationsFirebaseFirestore.collection("UserProfileData")
+                .document(objectFirebaseAuth.getCurrentUser().getEmail().toString())
+                .collection("Notifications");
 
         attachJavaObjectToXMLObject();
         setUpDrawerMenu();
@@ -133,6 +150,22 @@ public class MainContentPage extends AppCompatActivity implements NavigationView
             header_progressBar = headerXMLFile.findViewById(R.id.header_progressBar);
             objectBottomNavigationView = findViewById(R.id.bottomNavigationViewBar);
             objectFloatingActionButton = findViewById(R.id.mainContentPage_addStatusFloatingButton);
+
+            objectToolbar.inflateMenu(R.menu.main_content_menu_bar);
+            objectToolbar.setOnMenuItemClickListener(new Toolbar.OnMenuItemClickListener() {
+                @Override
+                public boolean onMenuItemClick(MenuItem item) {
+                    switch (item.getItemId()) {
+                        case R.id.mainContentPage_item_notificationicon:
+                            startActivity(new Intent(MainContentPage.this, AllNotifications.class));
+                            return true;
+                    }
+
+                    return false;
+                }
+            });
+
+            notificationTV = (TextView) MenuItemCompat.getActionView(objectNavigationView.getMenu().findItem(R.id.item_notifications));
         } catch (Exception e) {
             Toast.makeText(this, "İçerik Sayfası" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
@@ -254,5 +287,36 @@ public class MainContentPage extends AppCompatActivity implements NavigationView
         } catch (Exception e) {
             Toast.makeText(this, "İçerik Sayfası:" + e.getMessage(), Toast.LENGTH_SHORT).show();
         }
+    }
+
+    private ListenerRegistration objectListenerRegistration;
+    @Override
+    protected void onStart() {
+        super.onStart();
+        try {
+            objectListenerRegistration = objectCollectionReference.addSnapshotListener(this, new EventListener<QuerySnapshot>() {
+                @Override
+                public void onEvent(@Nullable QuerySnapshot value, @Nullable FirebaseFirestoreException error) {
+                    if (error != null) Toast.makeText(MainContentPage.this, error.getMessage(), Toast.LENGTH_SHORT).show();
+                    else if (!value.isEmpty()) {
+                        notificationTV.setGravity(Gravity.CENTER_VERTICAL);
+                        notificationTV.setTypeface(null, Typeface.BOLD);
+                        notificationTV.setTextColor(getResources().getColor(R.color.design_default_color_on_primary));
+
+                        int size = value.size();
+                        notificationTV.setText(Integer.toString(size) + " ");
+                        Toast.makeText(MainContentPage.this, size + " adet bildiriminiz var", Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
+        } catch (Exception e) {
+            Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
+        }
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        objectListenerRegistration.remove();
     }
 }

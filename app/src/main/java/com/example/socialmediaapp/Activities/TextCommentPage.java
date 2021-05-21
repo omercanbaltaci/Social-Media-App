@@ -12,6 +12,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.socialmediaapp.AdaptersClasses.GetTextCommentAdapter;
+import com.example.socialmediaapp.AppClasses.AddNotifications;
 import com.example.socialmediaapp.ModelClasses.Model_GetTextComments;
 import com.example.socialmediaapp.R;
 import com.firebase.ui.firestore.FirestoreRecyclerOptions;
@@ -40,11 +41,13 @@ public class TextCommentPage extends AppCompatActivity {
     // Class
     private Bundle objectBundle;
     private String documentId;
+    private String recUserEmail;
     private Date currentDate;
     private SimpleDateFormat objectSimpleDateFormat;
     int noOfComments;
     private String currentLoggedInUser;
     private GetTextCommentAdapter objectGetTextCommentAdapter;
+    private AddNotifications objectAddNotifications;
 
     // Firebase
     private FirebaseFirestore objectFirebaseFirestore;
@@ -61,6 +64,7 @@ public class TextCommentPage extends AppCompatActivity {
             attachJavaViewsToXML();
             objectBundle = getIntent().getExtras();
             documentId = objectBundle.getString("documentId");
+            recUserEmail = objectBundle.getString("userEmailID");
             getCommentIntoRV();
 
             addCommentBtn.setOnClickListener(new View.OnClickListener() {
@@ -146,6 +150,7 @@ public class TextCommentPage extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(DocumentReference documentReference) {
                                                 Toast.makeText(TextCommentPage.this, "Yorum gönderildi", Toast.LENGTH_SHORT).show();
+                                                objectAddNotifications.generateNotification(currentLoggedInUser, "comment", "text status", recUserEmail);
 
                                                 commentET.setText("");
                                                 objectCollectionReference = objectFirebaseFirestore.collection("TextStatus")
@@ -200,6 +205,7 @@ public class TextCommentPage extends AppCompatActivity {
             objectRecylerView = findViewById(R.id.textStatus_commentRV);
             commentET = findViewById(R.id.textStatus_commentET);
             addCommentBtn = findViewById(R.id.textStatus_commentAddCommentBtn);
+            objectAddNotifications = new AddNotifications();
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }

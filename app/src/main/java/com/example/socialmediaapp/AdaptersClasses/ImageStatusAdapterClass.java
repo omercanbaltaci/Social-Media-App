@@ -15,6 +15,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.bumptech.glide.Glide;
 import com.example.socialmediaapp.Activities.ImageCommentPage;
 import com.example.socialmediaapp.Activities.TextCommentPage;
+import com.example.socialmediaapp.AppClasses.AddNotifications;
 import com.example.socialmediaapp.ModelClasses.Model_ImageStatus;
 import com.example.socialmediaapp.R;
 import com.firebase.ui.firestore.FirestoreRecyclerAdapter;
@@ -59,6 +60,8 @@ public class ImageStatusAdapterClass extends FirestoreRecyclerAdapter<Model_Imag
         Glide.with(imageStatusViewHolderClass.imageStatusIV.getContext()).load(linkOFImageStatus)
                 .into(imageStatusViewHolderClass.imageStatusIV);
 
+        AddNotifications objectAddNotifications = new AddNotifications();
+
         imageStatusViewHolderClass.heartIV.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,6 +80,7 @@ public class ImageStatusAdapterClass extends FirestoreRecyclerAdapter<Model_Imag
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.getResult().exists()) {
                                 String currentFlag = task.getResult().getString("currentflag");
+                                objectAddNotifications.generateNotification(userEmail, "love", "resim", model_imageStatus.getUseremail());
 
                                 if (currentFlag.equals("love")) objDocumentReference.update("currentflag", "love");
                                 else if (currentFlag.equals("haha")) {
@@ -120,6 +124,7 @@ public class ImageStatusAdapterClass extends FirestoreRecyclerAdapter<Model_Imag
                                         .getReference().update("nooflove", totalHearts);
 
                                 objDocumentReference.update("currentflag", "love");
+                                objectAddNotifications.generateNotification(userEmail, "love", "resim", model_imageStatus.getUseremail());
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -150,6 +155,7 @@ public class ImageStatusAdapterClass extends FirestoreRecyclerAdapter<Model_Imag
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.getResult().exists()) {
                                 String currentFlag = task.getResult().getString("currentflag");
+                                objectAddNotifications.generateNotification(userEmail, "haha", "resim", model_imageStatus.getUseremail());
 
                                 if (currentFlag.equals("haha")) objDocumentReference.update("currentflag", "haha");
                                 else if (currentFlag.equals("love")) {
@@ -193,6 +199,7 @@ public class ImageStatusAdapterClass extends FirestoreRecyclerAdapter<Model_Imag
                                         .getReference().update("noofhaha", totalHaha);
 
                                 objDocumentReference.update("currentflag", "haha");
+                                objectAddNotifications.generateNotification(userEmail, "haha", "resim", model_imageStatus.getUseremail());
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -223,6 +230,7 @@ public class ImageStatusAdapterClass extends FirestoreRecyclerAdapter<Model_Imag
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.getResult().exists()) {
                                 String currentFlag = task.getResult().getString("currentflag");
+                                objectAddNotifications.generateNotification(userEmail, "sad", "resim", model_imageStatus.getUseremail());
 
                                 if (currentFlag.equals("sad")) objDocumentReference.update("currentflag", "sad");
                                 else if (currentFlag.equals("love")) {
@@ -266,6 +274,7 @@ public class ImageStatusAdapterClass extends FirestoreRecyclerAdapter<Model_Imag
                                         .getReference().update("noofsad", totalHaha);
 
                                 objDocumentReference.update("currentflag", "sad");
+                                objectAddNotifications.generateNotification(userEmail, "sad", "resim", model_imageStatus.getUseremail());
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -285,6 +294,7 @@ public class ImageStatusAdapterClass extends FirestoreRecyclerAdapter<Model_Imag
                 Context objectContext = imageStatusViewHolderClass.commentIV.getContext();
                 Intent objectIntent = new Intent(objectContext, ImageCommentPage.class);
                 objectIntent.putExtra("documentId", documentID);
+                objectIntent.putExtra("userEmailID", model_imageStatus.getUseremail());
                 objectContext.startActivity(objectIntent);
             }
         });
@@ -347,6 +357,7 @@ public class ImageStatusAdapterClass extends FirestoreRecyclerAdapter<Model_Imag
                                         @Override
                                         public void onSuccess(Void aVoid) {
                                             Toast.makeText(imageStatusViewHolderClass.favoriteImageStatusIV.getContext(), "Favoriye eklendi", Toast.LENGTH_SHORT).show();
+                                            objectAddNotifications.generateNotification(emailOfUser, "favori", "resim", model_imageStatus.getUseremail());
                                         }
                                     }).addOnFailureListener(new OnFailureListener() {
                                         @Override

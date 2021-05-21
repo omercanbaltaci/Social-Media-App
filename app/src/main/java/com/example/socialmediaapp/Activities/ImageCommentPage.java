@@ -13,6 +13,7 @@ import android.widget.Toast;
 
 import com.example.socialmediaapp.AdaptersClasses.GetImageCommentsAdapter;
 import com.example.socialmediaapp.AdaptersClasses.GetTextCommentAdapter;
+import com.example.socialmediaapp.AppClasses.AddNotifications;
 import com.example.socialmediaapp.ModelClasses.Model_GetImageComments;
 import com.example.socialmediaapp.ModelClasses.Model_GetTextComments;
 import com.example.socialmediaapp.R;
@@ -42,11 +43,13 @@ public class ImageCommentPage extends AppCompatActivity {
     // Class
     private Bundle objectBundle;
     private String documentId;
+    private String recUserEmail;
     private Date currentDate;
     private SimpleDateFormat objectSimpleDateFormat;
     int noOfComments;
     private String currentLoggedInUser;
     private GetImageCommentsAdapter objectGetImageCommentsAdapter;
+    private AddNotifications objectAddNotifications;
 
     // Firebase
     private FirebaseFirestore objectFirebaseFirestore;
@@ -63,6 +66,7 @@ public class ImageCommentPage extends AppCompatActivity {
 
         objectBundle = getIntent().getExtras();
         documentId = objectBundle.getString("documentId");
+        recUserEmail = objectBundle.getString("userEmailID");
 
         getCommentIntoRV();
         addCommentBtn.setOnClickListener(new View.OnClickListener() {
@@ -145,6 +149,7 @@ public class ImageCommentPage extends AppCompatActivity {
                                             @Override
                                             public void onSuccess(DocumentReference documentReference) {
                                                 Toast.makeText(ImageCommentPage.this, "Yorum gönderildi", Toast.LENGTH_SHORT).show();
+                                                objectAddNotifications.generateNotification(currentLoggedInUser, "comment", "resim", recUserEmail);
 
                                                 commentET.setText("");
                                                 objectCollectionReference = objectFirebaseFirestore.collection("ImageStatus")
@@ -199,6 +204,7 @@ public class ImageCommentPage extends AppCompatActivity {
             objectRecylerView = findViewById(R.id.imageStatus_commentRV);
             commentET = findViewById(R.id.imageStatus_commentET);
             addCommentBtn = findViewById(R.id.imageStatus_commentAddCommentBtn);
+            objectAddNotifications = new AddNotifications();
         } catch (Exception e) {
             Toast.makeText(this, e.getMessage(), Toast.LENGTH_SHORT).show();
         }

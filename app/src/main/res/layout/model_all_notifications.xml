@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/light_gray"
+    android:layout_margin="2dp">
+
+    <ImageView
+        android:layout_width="25dp"
+        android:layout_height="25dp"
+        android:src="@drawable/ic_heart"
+        android:id="@+id/model_allnotifications_icon"
+        android:layout_marginTop="12dp"
+        android:layout_marginLeft="5dp"/>
+
+    <ImageView
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:src="@drawable/ic_profile"
+        android:id="@+id/model_allnotifications_profilePicIV"
+        android:scaleType="centerCrop"
+        android:layout_toRightOf="@id/model_allnotifications_icon"
+        android:layout_marginLeft="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/model_allnotifications_userEmail"
+        android:layout_toRightOf="@id/model_allnotifications_profilePic"
+        android:text="sample@sample.com"
+        android:textStyle="bold"
+        android:textColor="@color/black"
+        android:layout_marginTop="7dp"
+        android:layout_marginLeft="5dp"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/model_allnotifications_action"
+        android:layout_below="@id/model_allnotifications_userEmail"
+        android:layout_toRightOf="@id/model_allnotifications_profilePic"
+        android:layout_marginLeft="5dp"
+        android:text="Statünü beğendi"
+        android:textColor="@color/black"/>
+
+</RelativeLayout>
