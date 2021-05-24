@@ -249,19 +249,25 @@ public class MainContentPage extends AppCompatActivity implements NavigationView
         try {
             switch (item.getItemId()) {
                 case R.id.item_profile:
+                    startActivity(new Intent(this, ProfilePage.class));
                     Toast.makeText(this, "Profile gidiliyor", Toast.LENGTH_SHORT).show();
+                    closeDrawer();
                     return true;
                 case R.id.item_notifications:
                     Toast.makeText(this, "Bildirimlere gidiliyor", Toast.LENGTH_SHORT).show();
+                    closeDrawer();
                     return true;
                 case R.id.item_settings:
                     Toast.makeText(this, "Ayarlara gidiliyor", Toast.LENGTH_SHORT).show();
+                    closeDrawer();
                     return true;
                 case R.id.item_favorite:
                     Toast.makeText(this, "Favorilere gidiliyor", Toast.LENGTH_SHORT).show();
+                    closeDrawer();
                     return true;
                 case R.id.item_textstatus:
                     Toast.makeText(this, "Statülere gidiliyor", Toast.LENGTH_SHORT).show();
+                    closeDrawer();
                     return true;
                 case R.id.item_signOut:
                     signOutUser();

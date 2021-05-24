@@ -28,7 +28,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/model_allnotifications_userEmail"
-        android:layout_toRightOf="@id/model_allnotifications_profilePic"
+        android:layout_toRightOf="@id/model_allnotifications_profilePicIV"
         android:text="sample@sample.com"
         android:textStyle="bold"
         android:textColor="@color/black"
@@ -40,7 +40,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/model_allnotifications_action"
         android:layout_below="@id/model_allnotifications_userEmail"
-        android:layout_toRightOf="@id/model_allnotifications_profilePic"
+        android:layout_toRightOf="@id/model_allnotifications_profilePicIV"
         android:layout_marginLeft="5dp"
         android:text="Statünü beğendi"
         android:textColor="@color/black"/>

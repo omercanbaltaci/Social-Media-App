@@ -1,0 +1,184 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/background_tint"
+    tools:context=".Fragments.SettingFragment">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:layout_width="75dp"
+            android:layout_height="75dp"
+            android:src="@drawable/ic_profile"
+            android:scaleType="centerCrop"
+            android:id="@+id/settingFrag_profilePicIV"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="100dp"/>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:background="@drawable/round_btn_bg"
+            android:text="Değiştir"
+            android:textSize="8sp"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:layout_centerInParent="true"
+            android:layout_alignParentTop="true"
+            android:layout_marginTop="170dp"
+            android:id="@+id/settingFrag_changeDpButton"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Kullanıcı Adı"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:id="@+id/settingFrag_userNameTV"
+            android:typeface="monospace"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/settingFrag_changeDpButton"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:maxLength="20"
+            android:id="@+id/settingFrag_userNameET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Kullanıcı adı için tıklayın"
+            android:gravity="center|left"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_below="@id/settingFrag_userNameTV"
+            android:background="@drawable/setting_et_bg"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Kullanıcı Bilgisi"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:id="@+id/settingFrag_userBioTV"
+            android:typeface="monospace"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/settingFrag_userNameET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:inputType="textMultiLine"
+            android:maxLength="100"
+            android:id="@+id/settingFrag_userBioET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Kullanıcı bilgisi için tıklayın"
+            android:gravity="center|left"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_below="@id/settingFrag_userBioTV"
+            android:background="@drawable/setting_et_bg"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Şehir"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:id="@+id/settingFrag_userCityTV"
+            android:typeface="monospace"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/settingFrag_userBioET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:maxLength="20"
+            android:id="@+id/settingFrag_userCityET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Şehir bilgisi için tıklayın"
+            android:gravity="center|left"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_below="@id/settingFrag_userCityTV"
+            android:background="@drawable/setting_et_bg"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="20dp"
+            android:text="Ülke"
+            android:textSize="10sp"
+            android:textStyle="bold"
+            android:id="@+id/settingFrag_userCountryTV"
+            android:typeface="monospace"
+            android:minWidth="0dp"
+            android:minHeight="0dp"
+            android:layout_alignParentLeft="true"
+            android:layout_below="@id/settingFrag_userCityET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginTop="10dp"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:textSize="10sp"
+            android:maxLength="20"
+            android:id="@+id/settingFrag_userCountryET"
+            android:layout_marginLeft="30dp"
+            android:layout_marginRight="30dp"
+            android:hint="Ülke bilgisi için tıklayın"
+            android:gravity="center|left"
+            android:paddingLeft="5dp"
+            android:paddingBottom="5dp"
+            android:paddingTop="5dp"
+            android:textColor="@color/white"
+            android:textColorHint="@color/white"
+            android:layout_below="@id/settingFrag_userCountryTV"
+            android:background="@drawable/setting_et_bg"/>
+
+        <Button
+            android:layout_width="100dp"
+            android:layout_height="30dp"
+            android:text="Güncelle"
+            android:background="@drawable/round_btn_bg"
+            android:textSize="8sp"
+            android:minHeight="0dp"
+            android:minWidth="0dp"
+            android:layout_centerInParent="true"
+            android:id="@+id/settingFrag_updateInfoBtn"
+            android:layout_below="@id/settingFrag_userCountryET"
+            android:layout_marginTop="10dp"/>
+
+    </RelativeLayout>
+
+</RelativeLayout>
