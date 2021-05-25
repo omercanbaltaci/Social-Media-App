@@ -32,8 +32,8 @@
         android:text=""/>
 
     <Button
-        android:layout_width="30dp"
-        android:layout_height="17dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:id="@+id/profileFragment_bioBtn"
         android:layout_below="@id/profileFragment_userEmail"
         android:minHeight="0dp"
@@ -44,20 +44,21 @@
         android:layout_marginLeft="230dp"/>
 
     <LinearLayout
+        android:id="@+id/profileFragment_LLForPicMini"
         android:layout_width="match_parent"
         android:layout_height="80dp"
-        android:orientation="vertical"
         android:layout_below="@id/profileFragment_userEmail"
-        android:id="@+id/profileFragment_LLForPicMini">
+        android:layout_marginTop="2dp"
+        android:orientation="vertical">
 
         <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/profileFragment_miniProfilePicIV"
             android:layout_width="70dp"
             android:layout_height="70dp"
-            android:id="@+id/profileFragment_miniProfilePicIV"
             android:layout_gravity="center_horizontal"
             android:layout_marginTop="5dp"
             android:scaleType="centerCrop"
-            android:src="@drawable/ic_profile"/>
+            android:src="@drawable/ic_profile" />
 
     </LinearLayout>
 

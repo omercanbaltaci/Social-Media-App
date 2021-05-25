@@ -114,6 +114,14 @@ public class ProfileFragment extends Fragment {
         userBioDialog = new Dialog(getContext());
         userBioDialog.setContentView(R.layout.user_bio_layout);
 
+        bioBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                userBioDialog.show();
+                bioTV.setText(extractedBio);
+            }
+        });
+
         return parent;
     }
 
@@ -205,14 +213,6 @@ public class ProfileFragment extends Fragment {
             });
 
             bioTV = userBioDialog.findViewById(R.id.userBio_bioTV);
-            bioBtn.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    System.out.println("deneme");
-                    userBioDialog.show();
-                    bioTV.setText(extractedBio);
-                }
-            });
         } catch (Exception e) {
             Toast.makeText(getContext(), e.getMessage(), Toast.LENGTH_SHORT).show();
         }

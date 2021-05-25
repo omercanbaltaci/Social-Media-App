@@ -55,7 +55,7 @@ public class AllNotificationsAdapter extends FirestoreRecyclerAdapter<Model_AllN
     @Override
     public AllNotificationsViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         return new AllNotificationsViewHolder(LayoutInflater.from(parent.getContext())
-        .inflate(R.layout.model_all_notifications, parent, true));
+        .inflate(R.layout.model_all_notifications, parent, false));
     }
 
     public class AllNotificationsViewHolder extends RecyclerView.ViewHolder {

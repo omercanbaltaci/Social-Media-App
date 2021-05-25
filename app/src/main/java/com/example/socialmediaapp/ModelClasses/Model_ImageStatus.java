@@ -1,7 +1,7 @@
 package com.example.socialmediaapp.ModelClasses;
 
 public class Model_ImageStatus {
-    private String useremail, currentdatetime, status, profileurl, statusimgurl;
+    private String useremail, currentdatetime, status, profileurl, statusimageurl;
     private int nooflove, noofhaha, noofsad, noofcomments;
 
     public Model_ImageStatus() {
@@ -12,7 +12,7 @@ public class Model_ImageStatus {
         this.currentdatetime = currentdatetime;
         this.status = status;
         this.profileurl = profileurl;
-        this.statusimgurl = statusimgurl;
+        this.statusimageurl = statusimageurl;
         this.nooflove = nooflove;
         this.noofhaha = noofhaha;
         this.noofsad = noofsad;
@@ -51,12 +51,12 @@ public class Model_ImageStatus {
         this.profileurl = profileurl;
     }
 
-    public String getStatusimgurl() {
-        return statusimgurl;
+    public String getStatusimageurl() {
+        return statusimageurl;
     }
 
-    public void setStatusimgurl(String statusimgurl) {
-        this.statusimgurl = statusimgurl;
+    public void setStatusimageurl(String statusimageurl) {
+        this.statusimageurl = statusimageurl;
     }
 
     public int getNooflove() {

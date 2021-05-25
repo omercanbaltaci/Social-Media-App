@@ -45,6 +45,8 @@ public class ImageStatusAdapterClass extends FirestoreRecyclerAdapter<Model_Imag
 
     @Override
     protected void onBindViewHolder(@NonNull ImageStatusViewHolderClass imageStatusViewHolderClass, int i, @NonNull Model_ImageStatus model_imageStatus) {
+        String linkOfProfileImage = model_imageStatus.getProfileurl();
+        String linkOfImageStatus = model_imageStatus.getStatusimageurl();
         imageStatusViewHolderClass.userEmailTV.setText(model_imageStatus.getUseremail());
         imageStatusViewHolderClass.statusDateTV.setText(model_imageStatus.getCurrentdatetime());
         imageStatusViewHolderClass.imagesStatusDescriptionTV.setText(model_imageStatus.getStatus());
@@ -52,12 +54,10 @@ public class ImageStatusAdapterClass extends FirestoreRecyclerAdapter<Model_Imag
         imageStatusViewHolderClass.hahaCountTV.setText(Integer.toString(model_imageStatus.getNoofhaha()));
         imageStatusViewHolderClass.sadCountTV.setText(Integer.toString(model_imageStatus.getNoofsad()));
         imageStatusViewHolderClass.noOfCommentsTV.setText(Integer.toString(model_imageStatus.getNoofcomments()));
-        String linkOfProfileImage = model_imageStatus.getProfileurl();
-        String linkOFImageStatus = model_imageStatus.getStatusimgurl();
 
         Glide.with(imageStatusViewHolderClass.userProfileIV.getContext()).load(linkOfProfileImage)
                 .into(imageStatusViewHolderClass.userProfileIV);
-        Glide.with(imageStatusViewHolderClass.imageStatusIV.getContext()).load(linkOFImageStatus)
+        Glide.with(imageStatusViewHolderClass.imageStatusIV.getContext()).load(linkOfImageStatus)
                 .into(imageStatusViewHolderClass.imageStatusIV);
 
         AddNotifications objectAddNotifications = new AddNotifications();
