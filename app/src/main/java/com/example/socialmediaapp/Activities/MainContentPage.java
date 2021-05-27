@@ -26,6 +26,7 @@ import android.widget.Toast;
 import com.bumptech.glide.Glide;
 import com.example.socialmediaapp.Fragments.Favorites;
 import com.example.socialmediaapp.Fragments.Images;
+import com.example.socialmediaapp.Fragments.SettingFragment;
 import com.example.socialmediaapp.Fragments.Statuses;
 import com.example.socialmediaapp.R;
 import com.google.android.gms.tasks.OnFailureListener;
@@ -254,18 +255,17 @@ public class MainContentPage extends AppCompatActivity implements NavigationView
                     closeDrawer();
                     return true;
                 case R.id.item_notifications:
+                    startActivity(new Intent(this, AllNotifications.class));
                     Toast.makeText(this, "Bildirimlere gidiliyor", Toast.LENGTH_SHORT).show();
                     closeDrawer();
                     return true;
-                case R.id.item_settings:
-                    Toast.makeText(this, "Ayarlara gidiliyor", Toast.LENGTH_SHORT).show();
-                    closeDrawer();
-                    return true;
                 case R.id.item_favorite:
+                    changeFragment(objectFavorites);
                     Toast.makeText(this, "Favorilere gidiliyor", Toast.LENGTH_SHORT).show();
                     closeDrawer();
                     return true;
                 case R.id.item_textstatus:
+                    changeFragment(objectStatuses);
                     Toast.makeText(this, "Statülere gidiliyor", Toast.LENGTH_SHORT).show();
                     closeDrawer();
                     return true;

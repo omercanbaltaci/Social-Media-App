@@ -17,7 +17,7 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 public class ProfilePage extends AppCompatActivity {
     private BottomNavigationView objectBottomNavigationView;
     private ProfileFragment objectProfileFragment;
-    private SettingFragment objectSettingFragment;
+    public SettingFragment objectSettingFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

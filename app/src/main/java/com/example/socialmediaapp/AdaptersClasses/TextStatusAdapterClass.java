@@ -38,7 +38,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
 
     @Override
     protected void onBindViewHolder(@NonNull TextStatusViewHolder textStatusViewHolder, int i, @NonNull Model_TextStatus model_textStatus) {
-        textStatusViewHolder.userStatusTV.setText(model_textStatus.getUseremail());
+        textStatusViewHolder.userEmailTV.setText(model_textStatus.getUseremail());
         textStatusViewHolder.dateTimeTV.setText(model_textStatus.getCurrentdatetime());
         textStatusViewHolder.userStatusTV.setText(model_textStatus.getStatus());
         textStatusViewHolder.heartCountTV.setText(Integer.toString(model_textStatus.getNooflove()));
@@ -70,7 +70,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.getResult().exists()) {
                                 String currentFlag = task.getResult().getString("currentflag");
-                                objectAddNotifications.generateNotification(userEmail, "love", "text status", model_textStatus.getUseremail());
+                                objectAddNotifications.generateNotification(userEmail, " tepki verdi", "text status", model_textStatus.getUseremail());
 
                                 if (currentFlag.equals("love")) objDocumentReference.update("currentflag", "love");
                                 else if (currentFlag.equals("haha")) {
@@ -114,7 +114,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                                         .getReference().update("nooflove", totalHearts);
 
                                 objDocumentReference.update("currentflag", "love");
-                                objectAddNotifications.generateNotification(userEmail, "love", "text status", model_textStatus.getUseremail());
+                                objectAddNotifications.generateNotification(userEmail, " tepki verdi", "text status", model_textStatus.getUseremail());
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -145,7 +145,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.getResult().exists()) {
                                 String currentFlag = task.getResult().getString("currentflag");
-                                objectAddNotifications.generateNotification(userEmail, "haha", "text status", model_textStatus.getUseremail());
+                                objectAddNotifications.generateNotification(userEmail, " tepki verdi", "text status", model_textStatus.getUseremail());
 
                                 if (currentFlag.equals("haha")) objDocumentReference.update("currentflag", "haha");
                                 else if (currentFlag.equals("love")) {
@@ -189,7 +189,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                                         .getReference().update("noofhaha", totalHaha);
 
                                 objDocumentReference.update("currentflag", "haha");
-                                objectAddNotifications.generateNotification(userEmail, "haha", "text status", model_textStatus.getUseremail());
+                                objectAddNotifications.generateNotification(userEmail, " tepki verdi", "text status", model_textStatus.getUseremail());
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -220,7 +220,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                         public void onComplete(@NonNull Task<DocumentSnapshot> task) {
                             if (task.getResult().exists()) {
                                 String currentFlag = task.getResult().getString("currentflag");
-                                objectAddNotifications.generateNotification(userEmail, "sad", "text status", model_textStatus.getUseremail());
+                                objectAddNotifications.generateNotification(userEmail, " tepki verdi", "text status", model_textStatus.getUseremail());
 
                                 if (currentFlag.equals("sad")) objDocumentReference.update("currentflag", "sad");
                                 else if (currentFlag.equals("love")) {
@@ -264,7 +264,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                                         .getReference().update("noofsad", totalHaha);
 
                                 objDocumentReference.update("currentflag", "sad");
-                                objectAddNotifications.generateNotification(userEmail, "sad", "text status", model_textStatus.getUseremail());
+                                objectAddNotifications.generateNotification(userEmail, " tepki verdi", "text status", model_textStatus.getUseremail());
                             }
                         }
                     }).addOnFailureListener(new OnFailureListener() {
@@ -321,7 +321,7 @@ public class TextStatusAdapterClass extends FirestoreRecyclerAdapter<Model_TextS
                                 @Override
                                 public void onSuccess(Void aVoid) {
                                     Toast.makeText(textStatusViewHolder.favoriteIV.getContext(), "Favoriye eklendi", Toast.LENGTH_SHORT).show();
-                                    objectAddNotifications.generateNotification(userEmail, "favorite", "text status", model_textStatus.getUseremail());
+                                    objectAddNotifications.generateNotification(userEmail, " tepki verdi", "text status", model_textStatus.getUseremail());
                                 }
                             }).addOnFailureListener(new OnFailureListener() {
                                 @Override

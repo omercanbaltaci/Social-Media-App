@@ -36,7 +36,7 @@ public class AllNotificationsAdapter extends FirestoreRecyclerAdapter<Model_AllN
         allNotificationsViewHolder.userEmailTV.setText(model_allNotifications.getEmail());
         String actionOfUser = model_allNotifications.getAction();
         String type = model_allNotifications.getType();
-        String finalStatus = type + " statünüzü" + actionOfUser;
+        String finalStatus = "Statünüze" + actionOfUser;
         allNotificationsViewHolder.userActionTV.setText(finalStatus);
         objectFirebaseFirestore.collection("UserProfileData")
                 .document(model_allNotifications.getEmail())

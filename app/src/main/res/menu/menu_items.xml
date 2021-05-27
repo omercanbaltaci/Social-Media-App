@@ -16,11 +16,6 @@
                 app:actionViewClass="android.widget.TextView"
                 android:icon="@drawable/ic_notifications"
                 android:checked="true"/>
-            <item
-                android:id="@+id/item_settings"
-                android:title="AYARLAR"
-                android:icon="@drawable/ic_settings"
-                android:checked="true"/>
         </menu>
     </item>
     <item
